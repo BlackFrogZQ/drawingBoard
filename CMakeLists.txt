@@ -1,7 +1,19 @@
 ﻿cmake_minimum_required(VERSION 3.27.0)
 set(projectName drawingBoard CACHE STRING "项目名" FORCE)
 set(projectVersion 0.1.0 CACHE STRING "版本号" FORCE)
+
+if (POLICY CMP0091)
+  cmake_policy(SET CMP0091 NEW)
+endif()
+set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+
 project(${projectName} VERSION ${projectVersion})
+add_compile_options("$<$<C_COMPILER_ID:MSVC>:/utf-8>")
+add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
+set(CMAKE_CXX_STANDARD 17)
+execute_process(
+    COMMAND chcp 65001
+)
 
 if(DEFINED CMAKE_BUILD_TYPE)
     if(${_Debug})

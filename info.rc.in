@@ -1,4 +1,6 @@
 #include "winver.h"
+#pragma code_page(65001)
+
 IDI_ICON1 ICON DISCARDABLE "ico.ico"
 VS_VERSION_INFO VERSIONINFO
  FILEVERSION ${PROJECT_VERSION_MAJOR}, ${PROJECT_VERSION_MINOR}, ${PROJECT_VERSION_PATCH}
@@ -22,7 +24,7 @@ BEGIN
         BEGIN
             VALUE "FileDescription", "${PROJECT_NAME}"
             VALUE "FileVersion", "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}"
-            VALUE "InternalName", "工业砂型3D打印软件"
+            VALUE "InternalName", "画图板印软件"
             VALUE "LegalCopyright", "© 重庆毕昇云科技有限公司. All rights reserved."
             VALUE "OriginalFilename", "${PROJECT_NAME}"
             VALUE "ProductName", "${PROJECT_NAME}"
