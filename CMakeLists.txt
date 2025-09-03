@@ -135,12 +135,18 @@ function(Fun_CopyDll exeBasicName)
 
     message(STATUS "拷贝结束...")
     message(STATUS "运行qt打包程序...")
+
+    # 根据编译类型设置 windeployqt 参数
+    if("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
+        set(WINDEPLOYQT_ARGS "--debug")
+    else()
+        set(WINDEPLOYQT_ARGS "--release")
+    endif()
+
     execute_process(
-        COMMAND windeployqt ${exeDir}\\${exeBasicName}.exe
+        COMMAND windeployqt ${WINDEPLOYQT_ARGS} ${exeDir}\\${exeBasicName}.exe
         WORKING_DIRECTORY $ENV{QT_Dir}\\bin
         OUTPUT_QUIET
-
-        # ERROR_QUIET
         ERROR_STRIP_TRAILING_WHITESPACE
         ERROR_VARIABLE errorMsg
     )
@@ -149,7 +155,7 @@ function(Fun_CopyDll exeBasicName)
         message(STATUS "qt打包成功...")
     else()
         message(STATUS "copy error:${errorMsg}")
-        message(WARNING "qt打包失败...请按F7生成exe后,重新运行cmake(在此文件中ctrl+s)")
+        message(WARNING "qt打包失败...请重新生成后重试")
     endif()
 endfunction()
 
