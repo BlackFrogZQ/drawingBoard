@@ -1,0 +1,26 @@
+{
+    "buildType": {
+        "default": "debug",
+        "description": "The build type.",
+        "choices": {
+            "debug": {
+                "short": "Debug",
+                "long": "禁用优化-包括调试信息",
+                "buildType": "Debug",
+                "settings": {
+                    "_Release": false,
+                    "_Debug": true
+                }
+            },
+            "release": {
+                "short": "Release",
+                "long": "优化速度-排除调试信息.",
+                "buildType": "Release",
+                "settings": {
+                    "_Release": true,
+                    "_Debug": false
+                }
+            }
+        }
+    }
+}
